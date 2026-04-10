@@ -1,6 +1,6 @@
 # Agent Observability Standard
 
-[![Apache License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE.txt)
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE.txt)
 
 ![AOS Banner](docs/assets/banner.png)
 
@@ -64,4 +64,4 @@ We welcome community contributions to enhance and evolve AOS!
 
 ## About
 
-The AOS is an open-source project under the [Apache License 2.0](LICENSE), and is open to contributions from the community.
+The AOS is an open-source project under the [MIT License](LICENSE.txt), and is open to contributions from the community.
