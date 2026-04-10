@@ -70,7 +70,7 @@ jobs:
             Updated files:
             - `pyproject.toml`
             - `docs/spec/instrument/specification.md`
-            - `specification/AOS/aos_schema.json`
+            - `specification/ACS/acs_schema.json`
             
             The version was read from the `version.txt` file.
           branch: version-sync-${{ env.VERSION }}
@@ -78,5 +78,5 @@ jobs:
           add-paths: |
             pyproject.toml
             docs/spec/instrument/specification.md
-            specification/AOS/aos_schema.json
+            specification/ACS/acs_schema.json
           

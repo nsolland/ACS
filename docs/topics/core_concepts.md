@@ -1,9 +1,9 @@
 # Core concepts
 
-AOS specifies the in-line _Hooks_ and out-of-band _Events_ that an agent need to support to be considered trustworthy.
+ACS specifies the in-line _Hooks_ and out-of-band _Events_ that an agent need to support to be considered trustworthy.
 Usings these events and hooks, _Observed Agents_ can be monitored and protected by a _Guardian Agent_.
 
-## Agent Observability Standard
+## Agent Control Standard
 
 To support an holistic view and security enforcement, the framework defines three components
 
@@ -50,11 +50,11 @@ The Guardian Agent enforces policies and enables tracing through the following:
 
 ## A2A and MCP
 
-AOS works even better when MCP and A2A are part of an Agent's environment.
+ACS works even better when MCP and A2A are part of an Agent's environment.
 It carries MCP and A2A intact, ensuring full compatibility and transparency.
 
-AOS also proposes security extensions for [MCP](../spec/instrument/extend_mcp.md) and [A2A](../spec/instrument/a2a/extend_a2a.md) for native observability support.
+ACS also proposes security extensions for [MCP](../spec/instrument/extend_mcp.md) and [A2A](../spec/instrument/a2a/extend_a2a.md) for native observability support.
 
 ## Read Next
 
-- [AOS in Action](./AOS_in_action_example.md)
+- [ACS in Action](./ACS_in_action_example.md)

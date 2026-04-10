@@ -1,11 +1,11 @@
-# Agent Observability Standard - Trace
+# Agent Control Standard - Trace
 
 AI agents make autonomous decisions that impact business outcomes. Without observability, enterprises can't understand, trust, or control these decisions.
 
 **Transform agent black boxes into transparent, auditable systems through comprehensive tracing.**
 
-!!! info "AOS Extends Industry Standards"
-    We already have great observability standards, so AOS doesn't introduce a new one. Instead, it extends existing industry-proven standards: OpenTelemetry and OCSF to support AI agent-specific components.
+!!! info "ACS Extends Industry Standards"
+    We already have great observability standards, so ACS doesn't introduce a new one. Instead, it extends existing industry-proven standards: OpenTelemetry and OCSF to support AI agent-specific components.
 
 ## Why Agent Observability Matters
 
@@ -27,12 +27,12 @@ Modern agents orchestrate complex workflows: reasoning chains, tool execution, k
 
 ## How It Works
 
-AOS provides specification for detailed tracing of agent behavior. Traces are implemented via extensions of proven industry standards:
+ACS provides specification for detailed tracing of agent behavior. Traces are implemented via extensions of proven industry standards:
 
-| Standard | AOS Spec | Status |
+| Standard | ACS Spec | Status |
 |--|--|--|
-| [OpenTelemetry](https://opentelemetry.io/) | [AOS with OpenTelemetry](./extend_opentelemetry.md) | Working draft |
-| [OCSF](https://ocsf.io/) | [AOS with OCSF](./extend_ocsf.md) | Working draft |
+| [OpenTelemetry](https://opentelemetry.io/) | [ACS with OpenTelemetry](./extend_opentelemetry.md) | Working draft |
+| [OCSF](https://ocsf.io/) | [ACS with OCSF](./extend_ocsf.md) | Working draft |
 
 ## Read Next
 

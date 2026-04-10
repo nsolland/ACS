@@ -1,4 +1,4 @@
-# AOS Editorial Style Guide
+# ACS Editorial Style Guide
 
 ## Core Philosophy
 
@@ -20,7 +20,7 @@
 
 ### Language Choices
 - Active voice dominates: "Agents expose events" not "Events are exposed by agents"
-- Present tense when possible: "AOS provides" not "AOS will provide"
+- Present tense when possible: "ACS provides" not "ACS will provide"
 - Technical terms get defined once, then used freely
 
 ## Structure Guidelines

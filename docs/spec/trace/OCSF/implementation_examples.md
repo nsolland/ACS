@@ -1,6 +1,6 @@
 # OCSF Implementation Examples
 
-This document provides detailed implementation examples and patterns for AOS's OCSF implementation.
+This document provides detailed implementation examples and patterns for ACS's OCSF implementation.
 
 ## Dependencies
 

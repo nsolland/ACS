@@ -1,10 +1,10 @@
-# AOS tracing with OCSF
+# ACS tracing with OCSF
 
 The Open Cybersecurity Schema Framework (OCSF) integration enables standardized security event logging for AI agent activities, making them compatible with existing SIEM and security monitoring tools.
 
 ## Overview
 
-AOS maps agent activities to OCSF event classes, providing:
+ACS maps agent activities to OCSF event classes, providing:
 
 - Standardized security event format
 - MCP & A2A Support out of the box
@@ -15,7 +15,7 @@ AOS maps agent activities to OCSF event classes, providing:
 
 ### Agent Activity Events
 
-AOS extends OCSF's API Activity class (6003) for agent-specific events.
+ACS extends OCSF's API Activity class (6003) for agent-specific events.
 
 Here's a basic example:
 
@@ -33,8 +33,8 @@ Here's a basic example:
   "metadata": {
     "version": "1.0.0",
     "product": {
-      "name": "AOS Security Layer",
-      "vendor_name": "AOS"
+      "name": "ACS Security Layer",
+      "vendor_name": "ACS"
     }
   },
   "actor": {
@@ -59,7 +59,7 @@ Here's a basic example:
   },
   "osint": [],
   "unmapped": {
-    "aos": {
+    "acs": {
       "tool_call": {
         "name": "database_query",
         "arguments": {
@@ -72,8 +72,8 @@ Here's a basic example:
           "name": "CustomerServiceAgent",
           "version": "1.0.0",
           "provider": {
-            "name": "AOS",
-            "url": "https://example.aos"
+            "name": "ACS",
+            "url": "https://example.acs"
           }
         },
         "session": {
@@ -115,8 +115,8 @@ Here's a basic example:
   "metadata": {
     "version": "1.0.0",
     "product": {
-      "name": "AOS Security Layer",
-      "vendor_name": "AOS"
+      "name": "ACS Security Layer",
+      "vendor_name": "ACS"
     },
     "correlation_uid": "exec-123"
   },
@@ -156,7 +156,7 @@ Here's a basic example:
   },
   "osint": [],
   "unmapped": {
-    "aos": {
+    "acs": {
       "step": {
         "id": "step-abc",
         "type": "toolCall",
@@ -189,8 +189,8 @@ Here's a basic example:
           "name": "CustomerServiceAgent",
           "version": "1.0.0",
           "provider": {
-            "name": "AOS",
-            "url": "https://example.aos"
+            "name": "ACS",
+            "url": "https://example.acs"
           }
         },
         "model": {
@@ -219,8 +219,8 @@ Here's a basic example:
   "metadata": {
     "version": "1.0.0",
     "product": {
-      "name": "AOS Security Layer",
-      "vendor_name": "AOS"
+      "name": "ACS Security Layer",
+      "vendor_name": "ACS"
     },
     "correlation_uid": "4bf92f3577b34da6a3ce929d0e0e4736"
   },
@@ -259,15 +259,15 @@ Here's a basic example:
     }
   },
   "unmapped": {
-    "aos": {
+    "acs": {
       "agent_context": {
         "agent": {
           "id": "planner-123",
           "name": "PlannerAgent",
           "version": "1.0.0",
           "provider": {
-            "name": "AOS",
-            "url": "https://example.aos"
+            "name": "ACS",
+            "url": "https://example.acs"
           }
         },
         "session": {

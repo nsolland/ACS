@@ -1,10 +1,10 @@
-# AOS Specification
+# ACS Specification
 
 **Version:** `0.1.0`
 
 ## 1. Core concepts
 - **Guardian Agent**: An agent that monitors other agents behavior for anomalous and risky decisions.
-- **Agent**: An agent that implements AOS-compliant HTTP endpoints, sending data and providing visibility into its plans, reasoning and context. Also understands AOS responses and enforces results.
+- **Agent**: An agent that implements ACS-compliant HTTP endpoints, sending data and providing visibility into its plans, reasoning and context. Also understands ACS responses and enforces results.
 - **Session**: A session is a scoped unit of interaction, starting when an agent is activated (by user or environment) and ending when the task or interaction is complete. The session consists of turns, where turn is a single end to end loop between user and agent.
 - **Step**: A step is a single unit of action or decision taken by the agent as part of its reasoning or execution process. It can be a user message,  tool/function call, memory operation (retrieve or store context), knowledge retrieval etc. 
 - **A2A Message**: A2A-protocol message captured between agents communication.
@@ -15,18 +15,18 @@
 
 ### 2.1. Transport Protocol
 
-- AOS communication **MUST** occur over **HTTP(S)**.
+- ACS communication **MUST** occur over **HTTP(S)**.
 
 ### 2.2. Data Format
 
-AOS uses **[JSON-RPC 2.0](https://www.jsonrpc.org/specification)** as the payload format for all requests and responses
+ACS uses **[JSON-RPC 2.0](https://www.jsonrpc.org/specification)** as the payload format for all requests and responses
 
 - Agent requests and guardian agent responses **MUST** adhere to the JSON-RPC 2.0 specification.
 - The `Content-Type` header for HTTP requests and responses containing JSON-RPC payloads **MUST** be `application/json`.
 
 
 ## 3. Standard Data Objects
-These objects define the structure of data exchanged within the JSON-RPC methods of AOS.
+These objects define the structure of data exchanged within the JSON-RPC methods of ACS.
 
 
 ### 3.1. `Agent` Object
@@ -338,15 +338,15 @@ Represents an organization. Used in: `Agent` as the owning organization of the a
 
 ### 3.12. JSON-RPC Structures
 
-AOS adheres to the standard [JSON-RPC 2.0](https://www.jsonrpc.org/specification) structures for requests and responses.
+ACS adheres to the standard [JSON-RPC 2.0](https://www.jsonrpc.org/specification) structures for requests and responses.
 
 #### 3.12.1. `JSONRPCRequest` Object
 
-All AOS method calls are encapsulated in a JSON-RPC Request object.
+All ACS method calls are encapsulated in a JSON-RPC Request object.
 
 - `jsonrpc`: A String specifying the version of the JSON-RPC protocol. **MUST** be exactly `"2.0"`.
 - `method`: A String containing the name of the method to be invoked (e.g., `"steps/knowledge"`, `"messages/mcp"`).
-- `params`: A Structured value that holds the parameter values to be used during the invocation of the method. This member **MAY** be omitted if the method expects no parameters. AOS methods typically use an `object` for `params`.
+- `params`: A Structured value that holds the parameter values to be used during the invocation of the method. This member **MAY** be omitted if the method expects no parameters. ACS methods typically use an `object` for `params`.
 - `id`: An identifier established by the Client that **MUST** contain a String or Number(Integer) value. The Guardian Agent **MUST** reply with the same value in the Response object. This member is used to correlate the context between the two request and response objects.
 
 #### 3.12.2. `JSONRPCResponse` Object
@@ -491,12 +491,12 @@ Object representing an agent signature as an agent identifier
 
 
 ## 4. Protocol RPC Methods
-All AOS RPC methods are invoked by the agent by sending an HTTP POST request to the guardian agent. The body of the HTTP POST request **MUST** be a `JSONRPCRequest` object, and the `Content-Type` header **MUST** be `application/json`.
+All ACS RPC methods are invoked by the agent by sending an HTTP POST request to the guardian agent. The body of the HTTP POST request **MUST** be a `JSONRPCRequest` object, and the `Content-Type` header **MUST** be `application/json`.
 
 The guardian's agent HTTP response body **MUST** be a `JSONRPCResponse` object. The `Content-Type` for JSON-RPC responses is `application/json`.<br>
 
 Most of the protocol methods refer to steps within the agent's workflow: tool call, knowledge, memory etc.<br>
-AOS also supports industial standards for Agent to Agent communication (A2A protocol) and tool call and context (MCP protocol).
+ACS also supports industial standards for Agent to Agent communication (A2A protocol) and tool call and context (MCP protocol).
 
 ### 4.1. steps/agentTrigger
 This is the first step that activates or triggers the agent as a result or a response to an event.<br>
@@ -512,7 +512,7 @@ This method should be used after the agent's input is extracted from the trigger
 | `trigger` | [`AgentTrigger`](#36-agenttrigger-object) | Yes       | The trigger that activated the agent.                        |
 
 
-#### 4.1.2. **Response on success**: [`AOSSuccessResponse`](#51-AOSSuccessResponse-object).
+#### 4.1.2. **Response on success**: [`ACSSuccessResponse`](#51-ACSSuccessResponse-object).
 #### 4.1.3. **Response on failure**: [`JSONRPCErrorResponse`](#313-jsonrpcerrorresonse-object).
 
 
@@ -532,7 +532,7 @@ There are many retrieval techniques including semantic search (embedding-based s
 | `reasoning`       | `string`                               | No      | Agent's reasoning. |
 
 
-#### 4.2.2. **Response on success**: [`AOSSuccessResponse`](#51-AOSsuccessresponse-object).
+#### 4.2.2. **Response on success**: [`ACSSuccessResponse`](#51-ACSsuccessresponse-object).
 #### 4.2.3. **Response on failure**: [`JSONRPCErrorResponse`](#313-jsonrpcerrorresonse-object).
 
 ### 4.3. steps/memoryStore
@@ -548,7 +548,7 @@ Mostly, interaction history or a summary is stored to the memory store.
 | `reasoning`       | `string`                               | No      | Agent's reasoning. |
 
 
-#### 4.3.2. **Response on success**: [`AOSSuccessResponse`](#51-AOSsuccessresponse-object).
+#### 4.3.2. **Response on success**: [`ACSSuccessResponse`](#51-ACSsuccessresponse-object).
 #### 4.3.3. **Response on failure**: [`JSONRPCErrorResponse`](#313-jsonrpcerrorresonse-object).
 
 
@@ -566,7 +566,7 @@ This context is passed alongside with the agent's instructions(system prompt), u
 | `reasoning`       | `string`                               | No      | Agent's reasoning. |
 
 
-#### 4.4.2. **Response on success**: [`AOSSuccessResponse`](#51-AOSsuccessresponse-object).
+#### 4.4.2. **Response on success**: [`ACSSuccessResponse`](#51-ACSsuccessresponse-object).
 #### 4.4.3. **Response on failure**: [`JSONRPCErrorResponse`](#313-jsonrpcerrorresonse-object).
 
 
@@ -587,7 +587,7 @@ A message with `system` role represents a message from the system, such as guard
 | `reasoning`       | `string`                               | No      | Agent's reasoning. Should be used with `agent` or `system` message. |
 
 
-#### 4.5.2. **Response on success**: [`AOSSuccessResponse`](#51-AOSsuccessresponse-object).
+#### 4.5.2. **Response on success**: [`ACSSuccessResponse`](#51-ACSsuccessresponse-object).
 #### 4.5.3. **Response on failure**: [`JSONRPCErrorResponse`](#313-jsonrpcerrorresonse-object).
 
 
@@ -606,7 +606,7 @@ This method should be used after tool inputs are inferred by the LLM and before 
 
 
 
-#### 4.5.2. **Response on success**: [`AOSSuccessResponse`](#51-AOSsuccessresponse-object).
+#### 4.5.2. **Response on success**: [`ACSSuccessResponse`](#51-ACSsuccessresponse-object).
 #### 4.5.3. **Response on failure**: [`JSONRPCErrorResponse`](#313-jsonrpcerrorresonse-object).
 
 ### 4.6. steps/toolCallResult
@@ -629,7 +629,7 @@ This method should be used after tool is completed and before the result goes ba
 | `isError` |`boolean`| Yes       | Whether tool completed successfully or resulted in an error.                       |
 
 
-#### 4.6.2. **Response on success**: [`AOSSuccessResponse`](#51-AOSsuccessresponse-object).
+#### 4.6.2. **Response on success**: [`ACSSuccessResponse`](#51-ACSsuccessresponse-object).
 #### 4.6.3. **Response on failure**: [`JSONRPCErrorResponse`](#313-jsonrpcerrorresonse-object).
 
 ### 4.7. ping
@@ -649,7 +649,7 @@ This method is used by the agent to ensure that guardian agent is alive.
 #### 4.7.3. **Response on failure**: [`JSONRPCErrorResponse`](#313-jsonrpcerrorresonse-object).
 
 ### 4.8. A2A Requests
-Every [A2A](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/) protocol method (request) has its corresponding method in AOS. The structure of these methods are similar and comply with JRPC request structure.<br>
+Every [A2A](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/) protocol method (request) has its corresponding method in ACS. The structure of these methods are similar and comply with JRPC request structure.<br>
 For client agent, these methods should be used before sending A2A request to a server (remote) agent to monitor outbound communications.<br>
 For server agent, these methods should be used before processing A2A request from client agent to monitor inbound communications.<br>
 Read more about A2A support in [extend_a2a](../instrument/a2a/extend_a2a.md).
@@ -676,11 +676,11 @@ Read more about A2A support in [extend_a2a](../instrument/a2a/extend_a2a.md).
 - `tasks/get`
 
 
-#### 4.8.3. **Response on success**: [`AOSSuccessResponse`](#51-AOSsuccessresponse-object).
+#### 4.8.3. **Response on success**: [`ACSSuccessResponse`](#51-ACSsuccessresponse-object).
 #### 4.8.4. **Response on failure**: [`JSONRPCErrorResponse`](#313-jsonrpcerrorresonse-object).
 
 ### 4.9. A2A Responses
-Every response of [A2A supported methods](#482-a2a-supported-methods) from server agent has its corresponding AOS request.<br>
+Every response of [A2A supported methods](#482-a2a-supported-methods) from server agent has its corresponding ACS request.<br>
 
 For client agents, these methods should be used before the response from the server agent is processed by the client observed agent to monitor inbound communications.<br>
 For server agents, these methods should be used before the response the response is sent back to the client agent to monitor outbound communications.<br>
@@ -697,7 +697,7 @@ Read more about A2A support in [extend_a2a](../instrument/a2a/extend_a2a.md).
 | `payload`       | `object`                               | Yes      | A2A raw JSON message (response). |
 
 
-#### 4.9.2. **Response on success**: [`AOSSuccessResponse`](#51-AOSsuccessresponse-object).
+#### 4.9.2. **Response on success**: [`ACSSuccessResponse`](#51-ACSsuccessresponse-object).
 #### 4.9.3. **Response on failure**: [`JSONRPCErrorResponse`](#313-jsonrpcerrorresonse-object).
 
 
@@ -716,20 +716,20 @@ Read more about MCP support in [extend_mcp](../instrument/extend_mcp.md).
 | `message`       | `object`                               | Yes      | MCP-compliant message. |
 | `reasoning`       | `string`                               | No      | Agent's reasoning. |
 
-#### 4.10.2. **Response on success**: [`AOSSuccessResponse`](#51-AOSsuccessresponse-object).
+#### 4.10.2. **Response on success**: [`ACSSuccessResponse`](#51-ACSsuccessresponse-object).
 #### 4.10.3. **Response on failure**: [`JSONRPCErrorResponse`](#313-jsonrpcerrorresonse-object).
 
 
 ## 5. Responses
 
-### 5.1. `AOSSuccessResponse` Object
+### 5.1. `ACSSuccessResponse` Object
 | Field Name      | Type                                                            | Required | Description                                                        |
 | :-------------- | :-------------------------------------------------------------- | :------- | :----------------------------------------------------------------- |
 | `id`                   | `string` \| `integer`  | Yes       | Same id as the id in the correlated request. |
 | `jsonrpc`                   |`"2.0"` (literal)| Yes       | JSON-RPC version string. |
-| `result`                   |[`AOSSuccessResult`](#511-AOSsuccessresult-object)| Yes       | Success result. |
+| `result`                   |[`ACSSuccessResult`](#511-ACSsuccessresult-object)| Yes       | Success result. |
 
-#### 5.1.1. `AOSSuccessResult` Object
+#### 5.1.1. `ACSSuccessResult` Object
 
 | Field Name      | Type                                                            | Required | Description                                                        |
 | :-------------- | :-------------------------------------------------------------- | :------- | :----------------------------------------------------------------- |
@@ -738,7 +738,7 @@ Read more about MCP support in [extend_mcp](../instrument/extend_mcp.md).
 | `reasonCode`                   | `string`[] | No       | Timestamp (UTC recommended). |
 | `message`                   | `string`| Yes       | Human readable message explaining the decision. |
 | `data`                   | `Record<string, any>` | No       | Additional key-value data. |
-| `modifiedRequest`                   | `AOSRequest` | No       | Modified request. This is relevant when decision is `modify`. |
+| `modifiedRequest`                   | `ACSRequest` | No       | Modified request. This is relevant when decision is `modify`. |
 
 ### 5.2.`JSONRPCErrorResponse` Object
 | Field Name      | Type                                                            | Required | Description                                                        |
@@ -768,17 +768,17 @@ Read more about MCP support in [extend_mcp](../instrument/extend_mcp.md).
 
 ## 6. Error Handling
 
-AOS uses standard [JSON-RPC 2.0 error codes and structure](https://www.jsonrpc.org/specification#error_object) for reporting errors. Errors are returned in the `error` member of the `JSONRPCErrorResponse` object. See [`JSONRPCError` Object definition](#313-jsonrpcerror-object).
+ACS uses standard [JSON-RPC 2.0 error codes and structure](https://www.jsonrpc.org/specification#error_object) for reporting errors. Errors are returned in the `error` member of the `JSONRPCErrorResponse` object. See [`JSONRPCError` Object definition](#313-jsonrpcerror-object).
 
 ### 6.1. Standard JSON-RPC Errors
 
 These are standard codes defined by the JSON-RPC 2.0 specification.
 
-| Code                 | JSON-RPC Spec Meaning | Typical AOS `message`     | Description                                                                                  |
+| Code                 | JSON-RPC Spec Meaning | Typical ACS `message`     | Description                                                                                  |
 | :------------------- | :-------------------- | :------------------------ | :------------------------------------------------------------------------------------------- |
 | `-32700`             | Parse error (JSONParseError)          | Invalid JSON payload      | Server received JSON that was not well-formed.                                               |
 | `-32600`             | Invalid Request (InvalidRequestError)      | Invalid JSON-RPC Request  | The JSON payload was valid JSON, but not a valid JSON-RPC Request object.                    |
-| `-32601`             | Method not found (MethodNotFoundError)      | Method not found          | The requested AOS RPC `method` (e.g., `"steps/foo"`) does not exist or is not supported.     |
+| `-32601`             | Method not found (MethodNotFoundError)      | Method not found          | The requested ACS RPC `method` (e.g., `"steps/foo"`) does not exist or is not supported.     |
 | `-32602`             | Invalid params (InvalidParamsError)        | Invalid method parameters | The `params` provided for the method are invalid (e.g., wrong type, missing required field). |
 | `-32603`             | Internal error (InternalError)       | Internal server error     | An unexpected error occurred on the server during processing.                                |
-| `-32000` to `-32099` | Server error          | _(Server-defined)_        | Reserved for implementation-defined server-errors. AOS-specific errors use this range.       |
+| `-32000` to `-32099` | Server error          | _(Server-defined)_        | Reserved for implementation-defined server-errors. ACS-specific errors use this range.       |

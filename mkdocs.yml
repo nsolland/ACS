@@ -1,16 +1,16 @@
-site_name: Agent Observability Standard
+site_name: Agent Control Standard
 site_url: !ENV GITHUB_PAGES_URL
 site_description: >-
   An industry standard for building trustworthy AI agents - instrumentable, traceable and inspectable
    to enable enterprise-wide adoption with confidence.
 
 # Repository
-repo_name: trustworthyagents/aos
-repo_url: https://github.com/trustworthyagents/aos
+repo_name: Agent-Control-Standard/ACS
+repo_url: https://github.com/Agent-Control-Standard/ACS
 edit_uri: edit/dev/docs/
 
 # Copyright
-copyright: Copyright &copy; 2025 AOS
+copyright: Copyright &copy; 2025 ACS
 
 docs_dir: docs
 
@@ -58,19 +58,19 @@ extra:
   social:
     - icon: /fontawesome/regular/envelope
       name: Send us an email
-      link: mailto:aos@zenity.io
+      link: mailto:acs@zenity.io
 
 nav:
   - Trustworthy Agents: README.md
-  - AOS: aos.md
+  - ACS: acs.md
   - Topics:
     - Core concepts: topics/core_concepts.md
-    - AOS in Action: topics/AOS_in_action_example.md
+    - ACS in Action: topics/ACS_in_action_example.md
   - Specification:
     - Instrument:
       - Overview: spec/instrument/README.md
       - Supported Hooks: spec/instrument/hooks.md
-      - AOS specification: spec/instrument/specification.md
+      - ACS specification: spec/instrument/specification.md
       - Instrument MCP: spec/instrument/extend_mcp.md
       - Instrument A2A: spec/instrument/a2a/extend_a2a.md
     - Trace:

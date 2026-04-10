@@ -1,8 +1,8 @@
-# Agent Observability Standard
+# Agent Control Standard
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE.txt)
 
-![AOS Banner](docs/assets/banner.png)
+![ACS Banner](docs/assets/banner.png)
 
 **Making AI agents trustworthy by standardizing observability.**
 
@@ -20,43 +20,43 @@ For agents to become trustworthy they must be **inspectable, traceable and instr
 ### Key Components
 
 The standard covers the following aspects
-1. AOS that defines the interaction between the Observed Agent and the Guardian Agent
-2. Observability requirements and implementations for tracing all AOS events using OpenTelemetry and OCSF
+1. ACS that defines the interaction between the Observed Agent and the Guardian Agent
+2. Observability requirements and implementations for tracing all ACS events using OpenTelemetry and OCSF
 3. Agent BOM (AgBOM) requirements and implementations for exposing dynamic Agent's bill-of-material via CoycloneDX, SWID and SPDX
 
 ## Getting Started
 
-- 📚 **Explore the Documentation:** Visit the [Documentation Site](https://aos.owasp.org) for a complete overview, the full specification, tutorials, and guides.
-- 📝 **View the Specification:** [Specification](https://github.com/OWASP/www-project-agent-observability-standard/tree/main/specification)
+- 📚 **Explore the Documentation:** Visit the [Documentation Site](https://agentcontrolstandard.org) for a complete overview, the full specification, tutorials, and guides.
+- 📝 **View the Specification:** [Specification](https://github.com/Agent-Control-Standard/ACS/tree/main/specification)
 
 ## Contributing
 
-We welcome community contributions to enhance and evolve AOS!
+We welcome community contributions to enhance and evolve ACS!
 
 - **Questions & Discussions:** Join our [GitHub Discussions](do we have github enterprise?).
-- **Issues & Feedback:** Report issues or suggest improvements via [GitHub Issues](https://github.com/OWASP/www-project-agent-observability-standard/issues).
+- **Issues & Feedback:** Report issues or suggest improvements via [GitHub Issues](https://github.com/Agent-Control-Standard/ACS/issues).
 - **Contribution Guide:** See our [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to contribute.
 
 ## What's next
 
 #### v0.1 (Public Preview)
 - Overall documentation and requirements
-- AOS definitions and schema
+- ACS definitions and schema
 - Observability definitions for for OpenTelemetry and OCSF
 - AgBOM requirements
 
 #### v1
 - Implementation of Agent instrumentation
 - Implementation of Guardian Agent sample app with
-  - AOS Support
-  - AOS to OpenTelemetry mapper
-  - AOS to OCSF mapper
-- FastMCP client instrumentation for AOS
-- A2A client instrumentation for AOS
+  - ACS Support
+  - ACS to OpenTelemetry mapper
+  - ACS to OCSF mapper
+- FastMCP client instrumentation for ACS
+- A2A client instrumentation for ACS
 
 #### v2
 - Requirements for CycloneDX, SPDX, SWID
-- Implementation of AOS to AgBOM mappers for CycloneDX, SPDX, SWID
+- Implementation of ACS to AgBOM mappers for CycloneDX, SPDX, SWID
 
 #### v3
 - Extending A2A and MCP to support deny and modify operations
@@ -64,4 +64,4 @@ We welcome community contributions to enhance and evolve AOS!
 
 ## About
 
-The AOS is an open-source project under the [MIT License](LICENSE.txt), and is open to contributions from the community.
+The ACS is an open-source project under the [MIT License](LICENSE.txt), and is open to contributions from the community.

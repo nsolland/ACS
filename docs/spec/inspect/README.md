@@ -1,9 +1,9 @@
-# Agent Observability Standard - Inspect with AgBOM
+# Agent Control Standard - Inspect with AgBOM
 
 As AI agents become more sophisticated, transparent insight into their architecture, behavior, and security posture becomes critical. The Agent Bill of Materials (AgBOM) addresses this need by providing a structured, dynamic inventory of all components comprising an agent system including tools, models, capabilities, and dependencies. This concept aligns with growing calls for AI system transparency and supply chain integrity, particularly within regulated or enterprise environments.
 
 !!! info "AgBOM Extends Industry Standards"
-    We already have great Bill-of-Material standards, so AOS doesn't introduce a new one. Instead, it extends existing industry-proven standards: CycloneDX, SPDX, and SWID to support AI agent-specific components.
+    We already have great Bill-of-Material standards, so ACS doesn't introduce a new one. Instead, it extends existing industry-proven standards: CycloneDX, SPDX, and SWID to support AI agent-specific components.
 
 ## What Is AgBOM?
 AgBOM, short for Agent Bill-of-Materials, is a comprehensive inventory that captures metadata about every component in an AI agent system. Its core purpose is to enable inspectability, allowing developers, auditors, and stakeholders to determine:
@@ -21,8 +21,8 @@ To support industry-wide adoption and interoperability, AgBOM supports output in
 | BOM standard | AgBOM Spec | Status |
 |--|--|--|
 | [CycloneDX](https://cyclonedx.org/) | [AgBOM with CycloneDX](./extend_cyclonedx.md) | Working draft |
-| [SPDX](https://spdx.dev/) | [AgBOM with SPDX](./extend_spdx.md) | [Help wanted](https://github.com/OWASP/www-project-agent-observability-standard/issues/20) |
-| [SWID](https://csrc.nist.gov/Projects/Software-Identification-SWID) | [AgBOM with SWID](./extend_swid.md) | [Help wanted](https://github.com/OWASP/www-project-agent-observability-standard/issues/21) |
+| [SPDX](https://spdx.dev/) | [AgBOM with SPDX](./extend_spdx.md) | [Help wanted](https://github.com/Agent-Control-Standard/ACS/issues/20) |
+| [SWID](https://csrc.nist.gov/Projects/Software-Identification-SWID) | [AgBOM with SWID](./extend_swid.md) | [Help wanted](https://github.com/Agent-Control-Standard/ACS/issues/21) |
 
 ### AgBOM entities and parameters:
 

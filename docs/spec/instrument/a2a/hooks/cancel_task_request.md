@@ -7,7 +7,7 @@ This hook **must** be used before the observed agent sends the A2A-compliant mes
 [`tasks/cancel`](specification.md#48-a2a-protocol-methods)
 
 #### 3. Reponse
-The response is an [`AOSSuccessResponse`](specification.md#51-aossuccessresponse-object) object.
+The response is an [`ACSSuccessResponse`](specification.md#51-acssuccessresponse-object) object.
 
 | Decision | Behavior |
 | :--------- | :---------- |
@@ -26,7 +26,7 @@ The response is an [`AOSSuccessResponse`](specification.md#51-aossuccessresponse
      }
    }
    ```
-#### 5. AOS payload
+#### 5. ACS payload
    ```json
    {
     "jsonrpc": "2.0",
@@ -100,7 +100,7 @@ This hook **must** be used before the observed agent receives the A2A-compliant 
 [`tasks/cancel`](specification.md#48-a2a-protocol-methods)
 
 #### 3. Reponse
-The response is an [`AOSSuccessResponse`](specification.md#51-aossuccessresponse-object) object.
+The response is an [`ACSSuccessResponse`](specification.md#51-acssuccessresponse-object) object.
 
 | Decision | Behavior |
 | :--------- | :---------- |
@@ -119,7 +119,7 @@ The response is an [`AOSSuccessResponse`](specification.md#51-aossuccessresponse
      }
    }
    ```
-#### 5. AOS payload
+#### 5. ACS payload
    ```json
    {
     "jsonrpc": "2.0",

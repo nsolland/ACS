@@ -42,13 +42,13 @@ def main():
         f.write(updated_content)
     print(f"✓ Updated specification.md to version {version}")
     
-    # Update aos_schema.json
-    with open('specification/AOS/aos_schema.json', 'r') as f:
+    # Update acs_schema.json
+    with open('specification/ACS/acs_schema.json', 'r') as f:
         data = json.load(f)
     data['version'] = version
-    with open('specification/AOS/aos_schema.json', 'w') as f:
+    with open('specification/ACS/acs_schema.json', 'w') as f:
         json.dump(data, f, indent=4)
-    print(f"✓ Updated aos_schema.json to version {version}")
+    print(f"✓ Updated acs_schema.json to version {version}")
 
 
 if __name__ == "__main__":

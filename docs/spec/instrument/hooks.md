@@ -1,6 +1,6 @@
 # Supported hooks
 
-The supported hooks intervent the agent's workflow and interactions with the environment (see [Agent Environment Overview](../topics/core_concepts.md#agent-environment-overview)), to seamlessly expose the interaction data through the AOS standard.
+The supported hooks intervent the agent's workflow and interactions with the environment (see [Agent Environment Overview](../topics/core_concepts.md#agent-environment-overview)), to seamlessly expose the interaction data through the ACS standard.
 
 | Components | When | Native support | Protocols
 |--|--|--|--|
@@ -30,7 +30,7 @@ This hook should be used **after** the content is extracted from the trigger and
 [`steps/agentTrigger`](specification.md#41-stepsagenttrigger)
 
 ### 1.3. Reponse
-The response is an [`AOSSuccessResponse`](specification.md#51-aossuccessresponse-object) object.
+The response is an [`ACSSuccessResponse`](specification.md#51-acssuccessresponse-object) object.
 
 | Decision | Behavior |
 | :--------- | :---------- |
@@ -96,7 +96,7 @@ This hook should be used **after** the inputs are extracted and **before** the t
 [`steps/toolCallRequest`](specification.md#46-stepstoolcallrequest)
 
 ### 2.3. Reponse
-The response is an [`AOSSuccessResponse`](specification.md#51-aossuccessresponse-object) object.
+The response is an [`ACSSuccessResponse`](specification.md#51-acssuccessresponse-object) object.
 
 | Decision | Behavior |
 | :--------- | :---------- |
@@ -159,7 +159,7 @@ This hook should be used **before** the tool result is processed.
 [`steps/toolCallResult`](specification.md#46-stepstoolcallresult)
 
 ### 3.3. Reponse
-The response is an [`AOSSuccessResponse`](specification.md#51-aossuccessresponse-object) object.
+The response is an [`ACSSuccessResponse`](specification.md#51-acssuccessresponse-object) object.
 
 | Decision | Behavior |
 | :--------- | :---------- |
@@ -218,7 +218,7 @@ For this hook `role` **MUST** be `user` (see example).
 
 
 ### 4.3. Reponse
-The response is an [`AOSSuccessResponse`](specification.md#51-aossuccessresponse-object) object.
+The response is an [`ACSSuccessResponse`](specification.md#51-acssuccessresponse-object) object.
 
 | Decision | Behavior |
 | :--------- | :---------- |
@@ -283,7 +283,7 @@ This hook should be used **after** memory store is retrieved and **before** it i
 
 
 ### 5.3. Reponse
-The response is an [`AOSSuccessResponse`](specification.md#51-aossuccessresponse-object) object.
+The response is an [`ACSSuccessResponse`](specification.md#51-acssuccessresponse-object) object.
 
 | Decision | Behavior |
 | :--------- | :---------- |
@@ -343,7 +343,7 @@ This hook should be used **after** knowledge is retrieved and **before** it gets
 
 
 ### 6.3. Reponse
-The response is an [`AOSSuccessResponse`](specification.md#51-aossuccessresponse-object) object.
+The response is an [`ACSSuccessResponse`](specification.md#51-acssuccessresponse-object) object.
 
 | Decision | Behavior |
 | :--------- | :---------- |
@@ -418,7 +418,7 @@ This hook should be used **before** the memory store is updated. <br>
 
 
 ### 7.3. Reponse
-The response is an [`AOSSuccessResponse`](specification.md#51-aossuccessresponse-object) object.
+The response is an [`ACSSuccessResponse`](specification.md#51-acssuccessresponse-object) object.
 
 | Decision | Behavior |
 | :--------- | :---------- |
@@ -481,7 +481,7 @@ For this hook `role` **MUST** be `agent` (see example).
 
 
 ### 8.3. Reponse
-The response is an [`AOSSuccessResponse`](specification.md#51-aossuccessresponse-object) object.
+The response is an [`ACSSuccessResponse`](specification.md#51-acssuccessresponse-object) object.
 
 | Decision | Behavior |
 | :--------- | :---------- |
@@ -559,7 +559,7 @@ This hook should be used **before** the agent sends MCP-compliant message to the
 
 
 ### 11.3. Reponse
-The response is an [`AOSSuccessResponse`](specification.md#51-aossuccessresponse-object) object.
+The response is an [`ACSSuccessResponse`](specification.md#51-acssuccessresponse-object) object.
 
 | Decision | Behavior |
 | :--------- | :---------- |
@@ -601,7 +601,7 @@ This hook should be used **before** the agent processes the MCP received message
 
 
 ### 12.3. Reponse
-The response is an [`AOSSuccessResponse`](specification.md#51-aossuccessresponse-object) object.
+The response is an [`ACSSuccessResponse`](specification.md#51-acssuccessresponse-object) object.
 
 | Decision | Behavior |
 | :--------- | :---------- |

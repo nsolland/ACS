@@ -1,16 +1,16 @@
-# About AOS
+# About ACS
 
-Agent Observability Standard (AOS) creates industry-wide transparency for AI agents.
+Agent Control Standard (ACS) creates industry-wide transparency for AI agents.
 
 ## Mission
 
 Transform AI agents from black boxes into trustworthy systems through standardized observability.
 
-Enterprises need to see what agents do, understand why they act, and control their behavior. AOS provides the specifications and protocols to make this possible.
+Enterprises need to see what agents do, understand why they act, and control their behavior. ACS provides the specifications and protocols to make this possible.
 
 ## What We're Building
 
-**Instrumentation Standard**: AOS standard for agent instrumentation.
+**Instrumentation Standard**: ACS standard for agent instrumentation.
 
 **Standards Extensions**: Enhance CycloneDX, SPDX, SWID for AI agent components. Extend OCSF and OpenTelemetry with agent-specific schemas.
 
@@ -22,10 +22,10 @@ Enterprises need to see what agents do, understand why they act, and control the
 
 ## Join the Mission
 
-AOS succeeds when the entire AI agent ecosystem adopts these standards. We're building this together.
+ACS succeeds when the entire AI agent ecosystem adopts these standards. We're building this together.
 
 - **Contribute**: Help shape the specifications
-- **Implement**: Build AOS support in your agent platform
+- **Implement**: Build ACS support in your agent platform
 - **Advocate**: Spread the word about trustworthy agents
 
-Contact us at [aos@zenity.io](mailto:aos@zenity.io).
+Contact us at [acs@zenity.io](mailto:acs@zenity.io).

@@ -1,4 +1,4 @@
-# Contributing to AOS
+# Contributing to ACS
 
 We're building trustworthy AI agents together. Your contributions make the future of agent observability possible.
 
@@ -8,7 +8,7 @@ Search existing issues and pull requests to avoid duplicating efforts.
 
 ## How to Contribute
 
-**Ideas**: Join issue discussions or start new ones. Your voice shapes AOS direction.
+**Ideas**: Join issue discussions or start new ones. Your voice shapes ACS direction.
 
 **Writing**: Expand documentation with your expertise. Clear explanations help everyone.
 
@@ -16,7 +16,7 @@ Search existing issues and pull requests to avoid duplicating efforts.
 
 **Code**: Implement specifications, build tools, create examples.
 
-**Standards**: Help Improve AOS, extend CycloneDX, SPDX, SWID for agent components.
+**Standards**: Help Improve ACS, extend CycloneDX, SPDX, SWID for agent components.
 
 ## Development Process
 
@@ -39,7 +39,7 @@ All submissions require review via GitHub pull requests. Consult [GitHub Help](h
 ## What We Need
 
 **High Priority:**
-Look for unassigned [Open Issues](https://github.com/OWASP/www-project-agent-observability-standard/issues).
+Look for unassigned [Open Issues](https://github.com/Agent-Control-Standard/ACS/issues).
 
 **Always Welcome:**
 - Documentation improvements
@@ -76,7 +76,7 @@ This guide is based on [github-contributing](https://raw.githubusercontent.com/s
 
 ## Community
 
-- **[GitHub Discussions](https://github.com/OWASP/www-project-agent-observability-standard/discussions)**: Ask questions, share ideas
-- **[Issues](https://github.com/OWASP/www-project-agent-observability-standard/issues)**: Report bugs, request features
+- **[GitHub Discussions](https://github.com/Agent-Control-Standard/ACS/discussions)**: Ask questions, share ideas
+- **[Issues](https://github.com/Agent-Control-Standard/ACS/issues)**: Report bugs, request features
 
 We're building the future of AI agent observability. Join us.

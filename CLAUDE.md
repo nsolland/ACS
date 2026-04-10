@@ -10,7 +10,7 @@ Before finalizing any text, review against the Editorial Checklist in STYLE.md.
 
 ## Project Overview
 
-AOS (Agent Observability Standard) is the industry standard for building secure, observable AI agents. It delivers three core capabilities:
+ACS (Agent Control Standard) is the industry standard for building secure, observable AI agents. It delivers three core capabilities:
 - **Inspectability**: Complete visibility into agent components and capabilities
 - **Traceability**: Full trace trail with reasoning chains
 - **Instrumentability**: Hard controls and policy enforcement
@@ -35,7 +35,7 @@ uv pip install -e .
 ## Architecture Overview
 
 ### Core Framework Components
-The AOS framework consists of three interconnected layers:
+The ACS framework consists of three interconnected layers:
 
 1. **Instrument Layer** (Hooks)
    - Real-time control points that allow Guardian Agents to permit, deny, or modify agent actions
@@ -56,8 +56,8 @@ The AOS framework consists of three interconnected layers:
    - Critical for supply chain security and compliance
 
 ### Key Protocol Concepts
-- **Observed Agent**: The AI agent being monitored (implements AOS endpoints)
-- **Guardian Agent**: Enforces security policies and observability (consumes AOS data)
+- **Observed Agent**: The AI agent being monitored (implements ACS endpoints)
+- **Guardian Agent**: Enforces security policies and observability (consumes ACS data)
 - **Session**: Scoped interaction unit from activation to completion
 - **Step**: Atomic action/decision within agent reasoning process
 - **Hook Response**: Guardian's permit/deny/modify decision with optional mutations
@@ -72,12 +72,12 @@ The AOS framework consists of three interconnected layers:
 - **Standards Integration**: OpenTelemetry spans, OCSF events, SBOM formats
 
 ### Important Files
-- `specification/AOS/aos_schema.json`: Complete JSON Schema for AOS protocol
+- `specification/ACS/acs_schema.json`: Complete JSON Schema for ACS protocol
 - `docs/spec/instrument/specification.md`: Detailed protocol specification
 - `docs/spec/instrument/hooks.md`: Available hooks and their triggers
 - `docs/spec/trace/events.md`: Event catalog and schemas
 - `docs/topics/core_concepts.md`: Fundamental concepts and terminology
-- `docs/topics/AOS_in_action_example.md`: Step-by-step implementation example
+- `docs/topics/ACS_in_action_example.md`: Step-by-step implementation example
 - `mkdocs.yml`: Documentation site configuration
 
 ### Navigation Structure
@@ -90,7 +90,7 @@ The documentation follows this hierarchy:
 This is a documentation-focused project built with:
 - **UV** for Python dependency management (replaces pip)
 - **MkDocs Material** for documentation generation
-- **GitHub Pages** for hosting at aos.owasp.org
+- **GitHub Pages** for hosting at agentcontrolstandard.org
 
 ### Roadmap Context
 - **v0.1** (Current): Documentation, schemas, and requirements

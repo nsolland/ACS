@@ -1,11 +1,11 @@
-# AOS Supported Events
+# ACS Supported Events
 
 Every agent action becomes observable. Every decision gets traced. Every communication leaves a trail.
 
-Agent Observability Standard (AOS) transforms opaque AI systems into transparent, auditable processes through standardized event emission. This document defines the canonical events that enable trust through visibility.
+Agent Control Standard (ACS) transforms opaque AI systems into transparent, auditable processes through standardized event emission. This document defines the canonical events that enable trust through visibility.
 
 ## Event Classification
-All observable actions in AOS are considered **Agent Steps**. Each step represents a single, traceable action taken by the agent or the system. To enhance explainability and provide a clear structure for analysis, these steps are classified into the following groups based on their purpose. This classification is for semantic grouping and does not imply a technical difference in the underlying event structure.
+All observable actions in ACS are considered **Agent Steps**. Each step represents a single, traceable action taken by the agent or the system. To enhance explainability and provide a clear structure for analysis, these steps are classified into the following groups based on their purpose. This classification is for semantic grouping and does not imply a technical difference in the underlying event structure.
 
 | Category | Description | Events |
 |----------|-------------|---------|

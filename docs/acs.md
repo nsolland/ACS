@@ -1,7 +1,7 @@
-# Agent Observability Standard
+# Agent Control Standard
 
-The Agent Observability Standard (AOS) provides specification for building [trustworthy agents](./README.md).
-Agents that implement AOS can be deployed with higher trust.
+The Agent Control Standard (ACS) provides specification for building [trustworthy agents](./README.md).
+Agents that implement ACS can be deployed with higher trust.
 They are instrumentable, traceable and inspectable.
 They are an open book 
 
@@ -12,23 +12,23 @@ They have a dynamic bill-of-material, a clear audit trail and hard inline-contro
 Trustworthiness of agents builds upon the foundation of existing standards (MCP and A2A), but provides value regardless. 
 It build upon cybersecurity and observability standards including OpenTelemetry, OCSF, CycloneDX, SPDX and SWID.
 
-AOS makes agents trustworthy.
+ACS makes agents trustworthy.
 
 !!! info "Work in progress"
     This page is currently under development.
     
-    **Want to contribute?** Check out the [GitHub issue](https://github.com/OWASP/www-project-agent-observability-standard/issues/53) and join the discussion!
+    **Want to contribute?** Check out the [GitHub issue](https://github.com/Agent-Control-Standard/ACS/issues/53) and join the discussion!
 
 ## Trustworthy agents are
 
-??? example "Init agent with AOS"
+??? example "Init agent with ACS"
 
     === "LangChain (Python)"
 
         ```python
         from langchain.agents import initialize_agent, Tool
         from langchain.llms import OpenAI
-        from aos import AOSInstrument
+        from acs import ACSInstrument
         
         # Initialize LLM and tools
         llm = OpenAI(temperature=0)
@@ -45,7 +45,7 @@ AOS makes agents trustworthy.
             )
         ]
         
-        # Create agent with AOS instrumentation
+        # Create agent with ACS instrumentation
         agent = initialize_agent(
             tools, 
             llm, 
@@ -53,15 +53,15 @@ AOS makes agents trustworthy.
             verbose=True
         )
         
-        # Wrap with AOS for observability
-        aos_agent = AOSInstrument(agent)
+        # Wrap with ACS for observability
+        acs_agent = ACSInstrument(agent)
         ```
 
     === "Vercel AI SDK (TypeScript)"
 
         ```typescript
         import { createAgent } from '@vercel/ai'
-        import { AOSInstrument } from '@aos/sdk'
+        import { ACSInstrument } from '@acs/sdk'
         
         // Define tools
         const tools = {
@@ -81,14 +81,14 @@ AOS makes agents trustworthy.
           }
         }
         
-        // Create agent with AOS instrumentation
+        // Create agent with ACS instrumentation
         const agent = createAgent({
           model: 'gpt-4',
           tools,
           system: 'You are a helpful assistant'
         })
         
-        const aosAgent = new AOSInstrument(agent)
+        const acsAgent = new ACSInstrument(agent)
         ```
 
     === "MCP"
@@ -102,9 +102,9 @@ AOS makes agents trustworthy.
             "capabilities": {
               "tools": ["search", "calculate"],
               "models": ["claude-3-opus"],
-              "protocols": ["mcp", "aos"]
+              "protocols": ["mcp", "acs"]
             },
-            "aos": {
+            "acs": {
               "instrumentation": {
                 "enabled": true,
                 "hooks": ["agentTrigger", "toolCallRequest", "message"]
@@ -121,7 +121,7 @@ AOS makes agents trustworthy.
     === "A2A"
 
         ```yaml
-        # Agent manifest with AOS capabilities
+        # Agent manifest with ACS capabilities
         apiVersion: a2a.io/v1
         kind: Agent
         metadata:
@@ -135,7 +135,7 @@ AOS makes agents trustworthy.
             - search
             - calculate
           observability:
-            aos:
+            acs:
               version: "1.0"
               instrumentation:
                 hooks:
@@ -158,12 +158,12 @@ AOS makes agents trustworthy.
 
     **Description**: Specifies hooks that allow intervention at agent's lifecycle and run-time execution.
 
-    **Standards**: [AOS Instrument](./spec/instrument/README.md).
+    **Standards**: [ACS Instrument](./spec/instrument/README.md).
 
     === "LangChain (Python)"
 
         ```python
-        from aos import GuardianAgent, PolicyResponse
+        from acs import GuardianAgent, PolicyResponse
         
         # Create a Guardian Agent to enforce policies
         guardian = GuardianAgent(
@@ -172,7 +172,7 @@ AOS makes agents trustworthy.
         )
         
         # Hook into agent runtime
-        @aos_agent.hook("toolCallRequest")
+        @acs_agent.hook("toolCallRequest")
         async def on_tool_call(context):
             # Guardian evaluates the tool call
             response = await guardian.evaluate({
@@ -191,14 +191,14 @@ AOS makes agents trustworthy.
             return response
         
         # Example: Guardian denies sensitive data access
-        result = await aos_agent.run("Search for employee SSN records")
+        result = await acs_agent.run("Search for employee SSN records")
             # > PermissionError: Tool call denied: Accessing PII data violates policy
         ```
 
     === "Vercel AI (TypeScript)"
 
         ```typescript
-        import { GuardianAgent, HookContext } from '@aos/guardian'
+        import { GuardianAgent, HookContext } from '@acs/guardian'
         
         // Configure Guardian Agent
         const guardian = new GuardianAgent({
@@ -207,7 +207,7 @@ AOS makes agents trustworthy.
         })
         
         // Register hooks for runtime control
-        aosAgent.registerHook('toolCallRequest', async (context: HookContext) => {
+        acsAgent.registerHook('toolCallRequest', async (context: HookContext) => {
           const response = await guardian.evaluate({
             hook: 'toolCallRequest',
             tool: context.toolName,
@@ -227,7 +227,7 @@ AOS makes agents trustworthy.
         })
         
         // Example: Cost control policy in action
-        await aosAgent.run('Generate 1000 images using DALL-E')
+        await acsAgent.run('Generate 1000 images using DALL-E')
         // > Error: Denied: Request exceeds cost threshold ($50 limit)
         ```
 
@@ -236,7 +236,7 @@ AOS makes agents trustworthy.
         ```json
         {
           "jsonrpc": "2.0",
-          "method": "aos/registerHook",
+          "method": "acs/registerHook",
           "params": {
             "hook": "toolCallRequest",
             "guardianEndpoint": "https://guardian.example.com/evaluate",
@@ -276,7 +276,7 @@ AOS makes agents trustworthy.
     === "A2A"
 
         ```yaml
-        # Available AOS hooks for instrumentation
+        # Available ACS hooks for instrumentation
         
         agentTrigger:
           description: Fires when agent starts processing
@@ -312,26 +312,26 @@ AOS makes agents trustworthy.
 
     **Description**: Specifies events that capture AI agent lifecycle and runtime execution. Extends OpenTelemetry and OCSF specs with these properties.
 
-    **Standards**: [AOS Trace](./spec/trace/README.md). Extends [OpenTelemetry](./spec/trace/extend_opentelemetry.md), [OCSF](./spec/trace/extend_ocsf.md).
+    **Standards**: [ACS Trace](./spec/trace/README.md). Extends [OpenTelemetry](./spec/trace/extend_opentelemetry.md), [OCSF](./spec/trace/extend_ocsf.md).
 
     === "LangChain (Python)"
 
         ```python
         from opentelemetry import trace
-        from aos.trace import AOSTraceProvider
+        from acs.trace import ACSTraceProvider
         
-        # Configure OpenTelemetry with AOS extensions
+        # Configure OpenTelemetry with ACS extensions
         tracer = trace.get_tracer(
             "research-assistant",
-            provider=AOSTraceProvider()
+            provider=ACSTraceProvider()
         )
         
         # Agent execution with automatic tracing
         with tracer.start_as_current_span("agent_session") as span:
-            span.set_attribute("aos.session.id", "sess_123")
-            span.set_attribute("aos.agent.name", "research-assistant")
+            span.set_attribute("acs.session.id", "sess_123")
+            span.set_attribute("acs.agent.name", "research-assistant")
             
-            result = await aos_agent.run("Find recent AI safety papers")
+            result = await acs_agent.run("Find recent AI safety papers")
         
         # Trace output includes:
         # - Complete reasoning chain
@@ -347,14 +347,14 @@ AOS makes agents trustworthy.
           "operationName": "agent_session",
           "startTime": "2024-01-15T10:30:00Z",
           "attributes": {
-            "aos.session.id": "sess_123",
-            "aos.agent.name": "research-assistant",
-            "aos.reasoning.steps": 3,
-            "aos.tools.called": ["web-search", "summarize"]
+            "acs.session.id": "sess_123",
+            "acs.agent.name": "research-assistant",
+            "acs.reasoning.steps": 3,
+            "acs.tools.called": ["web-search", "summarize"]
           },
           "events": [
             {
-              "name": "aos.step.reasoning",
+              "name": "acs.step.reasoning",
               "timestamp": "2024-01-15T10:30:01Z",
               "attributes": {
                 "thought": "Need to search for recent AI safety papers",
@@ -369,7 +369,7 @@ AOS makes agents trustworthy.
     === "Vercel AI (TypeScript)"
 
         ```typescript
-        import { OpenTelemetryTracer } from '@aos/trace'
+        import { OpenTelemetryTracer } from '@acs/trace'
         
         // Configure tracing for TypeScript agent
         const tracer = new OpenTelemetryTracer({
@@ -378,7 +378,7 @@ AOS makes agents trustworthy.
         })
         
         // Wrap agent with tracing
-        const tracedAgent = tracer.instrument(aosAgent)
+        const tracedAgent = tracer.instrument(acsAgent)
         
         // Execute with automatic tracing
         const result = await tracedAgent.run('Find recent AI safety papers')
@@ -391,7 +391,7 @@ AOS makes agents trustworthy.
         ```json
         {
           "jsonrpc": "2.0",
-          "method": "aos/trace/emit",
+          "method": "acs/trace/emit",
           "params": {
             "traceId": "4bf92f3577b34da6a3ce929d0e0e4736",
             "spanId": "00f067aa0ba902b7",
@@ -437,7 +437,7 @@ AOS makes agents trustworthy.
     === "OCSF"
 
         ```python
-        from aos.trace import OCSFLogger
+        from acs.trace import OCSFLogger
         
         # Configure OCSF security event logging
         security_logger = OCSFLogger(
@@ -446,10 +446,10 @@ AOS makes agents trustworthy.
         )
         
         # Attach to agent for security events
-        aos_agent.attach_logger(security_logger)
+        acs_agent.attach_logger(security_logger)
         
         # Execute agent - security events logged automatically
-        result = await aos_agent.run("Access customer database")
+        result = await acs_agent.run("Access customer database")
         ```
         
         ```json
@@ -465,7 +465,7 @@ AOS makes agents trustworthy.
           "metadata": {
             "version": "1.0.0",
             "product": {
-              "name": "AOS Agent",
+              "name": "ACS Agent",
               "vendor_name": "Example Corp"
             }
           },
@@ -479,7 +479,7 @@ AOS makes agents trustworthy.
               "uid": "agent_456"
             }
           },
-          "aos_extensions": {
+          "acs_extensions": {
             "reasoning_chain": [
               {
                 "step": 1,
@@ -497,10 +497,10 @@ AOS makes agents trustworthy.
     === "Real-time Streaming"
 
         ```typescript
-        import { AOSTraceStream } from '@aos/trace'
+        import { ACSTraceStream } from '@acs/trace'
         
         // Stream trace events in real-time
-        const traceStream = new AOSTraceStream(aosAgent)
+        const traceStream = new ACSTraceStream(acsAgent)
         
         traceStream.on('event', (event) => {
           // Log to your observability platform
@@ -530,15 +530,15 @@ AOS makes agents trustworthy.
 
     **Description**: Specifies properties that capture tools, models and capabilities of an AI agent. Extends SBOM standard specs with these properties – AgBOM. Goes further to add dynamic updates to AgBOM to account for dynamic agent capability discovery.
 
-    **Standards**: [AOS Inspect](./spec/inspect/README.md). Extends [CycloneDX](./spec/inspect/extend_cyclonedx.md), [SPDX](./spec/inspect/extend_spdx.md), [SWID](./spec/inspect/extend_swid.md).
+    **Standards**: [ACS Inspect](./spec/inspect/README.md). Extends [CycloneDX](./spec/inspect/extend_cyclonedx.md), [SPDX](./spec/inspect/extend_spdx.md), [SWID](./spec/inspect/extend_swid.md).
 
     === "LangChain (Python)"
 
         ```python
-        from aos.inspect import generate_agbom
+        from acs.inspect import generate_agbom
         
         # Generate Agent Bill of Materials in CycloneDX format
-        agbom = generate_agbom(aos_agent, format="cyclonedx")
+        agbom = generate_agbom(acs_agent, format="cyclonedx")
         
         print(agbom.to_json(indent=2))
         ```
@@ -580,10 +580,10 @@ AOS makes agents trustworthy.
     === "Vercel AI (TypeScript)"
 
         ```typescript
-        import { generateAgBOM } from '@aos/inspect'
+        import { generateAgBOM } from '@acs/inspect'
         
         // Generate AgBOM in CycloneDX format for TypeScript agent
-        const agbom = await generateAgBOM(aosAgent, {
+        const agbom = await generateAgBOM(acsAgent, {
           format: 'cyclonedx'
         })
         
@@ -596,7 +596,7 @@ AOS makes agents trustworthy.
         ```json
         {
           "jsonrpc": "2.0",
-          "method": "aos/agbom/generate",
+          "method": "acs/agbom/generate",
           "params": {
             "format": "cyclonedx",
             "agent_id": "research-assistant"
@@ -667,10 +667,10 @@ AOS makes agents trustworthy.
     === "SPDX"
 
         ```python
-        from aos.inspect import generate_agbom
+        from acs.inspect import generate_agbom
         
         # Generate Agent Bill of Materials in SPDX format
-        agbom = generate_agbom(aos_agent, format="spdx")
+        agbom = generate_agbom(acs_agent, format="spdx")
         
         print(agbom.to_string())
         ```
@@ -681,7 +681,7 @@ AOS makes agents trustworthy.
         SPDXID: SPDXRef-DOCUMENT
         DocumentName: research-assistant-agbom
         DocumentNamespace: https://example.com/agbom/research-assistant
-        Creator: Tool: aos-sdk-1.0
+        Creator: Tool: acs-sdk-1.0
         Created: 2024-01-15T10:30:00Z
         
         # Package: AI Agent
@@ -709,11 +709,11 @@ AOS makes agents trustworthy.
     === "Dynamic Discovery"
 
         ```python
-        from aos.inspect import DynamicAgBOM
+        from acs.inspect import DynamicAgBOM
         import asyncio
         
         # Enable dynamic AgBOM updates
-        dynamic_agbom = DynamicAgBOM(aos_agent)
+        dynamic_agbom = DynamicAgBOM(acs_agent)
         
         # Subscribe to capability changes
         @dynamic_agbom.on_update
@@ -728,7 +728,7 @@ AOS makes agents trustworthy.
             await notify_security_team(new_agbom)
         
         # Example: Agent discovers new tool at runtime
-        await aos_agent.run("I need to analyze this PDF document")
+        await acs_agent.run("I need to analyze this PDF document")
         
         # Output:
         # Agent capability changed: COMPONENT_ADDED
@@ -740,10 +740,10 @@ AOS makes agents trustworthy.
     === "Real-time Updates"
 
         ```typescript
-        import { DynamicAgBOM, AgBOMEvent } from '@aos/inspect'
+        import { DynamicAgBOM, AgBOMEvent } from '@acs/inspect'
         
         // Create dynamic AgBOM monitor
-        const dynamicAgBOM = new DynamicAgBOM(aosAgent)
+        const dynamicAgBOM = new DynamicAgBOM(acsAgent)
         
         // Listen for capability changes
         dynamicAgBOM.on('update', async (event: AgBOMEvent) => {
@@ -757,7 +757,7 @@ AOS makes agents trustworthy.
           
           if (!validation.approved) {
             // Disable unapproved capability
-            await aosAgent.disableComponent(event.component.id)
+            await acsAgent.disableComponent(event.component.id)
             console.warn(`Disabled unapproved component: ${event.component.name}`)
           }
         })
