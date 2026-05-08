@@ -4,7 +4,7 @@
 
 ![ACS Banner](docs/assets/banner.png)
 
-**Making AI agents trustworthy by standardizing observability.**
+**Making AI agents trustworthy by standardizing observability and control.**
 
 ## Rational
 Agents must become trustworthy to enable widescale adoption.

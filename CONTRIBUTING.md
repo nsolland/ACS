@@ -1,6 +1,6 @@
 # Contributing to ACS
 
-We're building trustworthy AI agents together. Your contributions make the future of agent observability possible.
+We're building trustworthy AI agents together. Your contributions make the future of agent observability and control possible.
 
 **Before spending lots of time on something, ask for feedback on your idea first!**
 
@@ -79,4 +79,4 @@ This guide is based on [github-contributing](https://raw.githubusercontent.com/s
 - **[GitHub Discussions](https://github.com/Agent-Control-Standard/ACS/discussions)**: Ask questions, share ideas
 - **[Issues](https://github.com/Agent-Control-Standard/ACS/issues)**: Report bugs, request features
 
-We're building the future of AI agent observability. Join us.
+We're building the future of AI agent observability and control. Join us.
