@@ -1,5 +1,7 @@
-from .models import ACSDecision, ACSStatus, AuthorityToken, DelegationScope, ExecutionRequest, Receipt, VerificationResult
+from .decision import ACSDecision, ACSStatus
+from .schema import AuthorityToken, DelegationScope, ExecutionRequest, Receipt, VerificationResult
 from .verifier import ACSVerifier, verify
+from .receipt import issue_receipt
 
 __all__ = [
     "ACSDecision",
@@ -11,4 +13,5 @@ __all__ = [
     "VerificationResult",
     "ACSVerifier",
     "verify",
+    "issue_receipt",
 ]
