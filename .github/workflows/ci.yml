@@ -1,0 +1,38 @@
+name: docs
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  mkdocs:
+    name: mkdocs build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install documentation dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+
+      - name: Build documentation
+        env:
+          GITHUB_PAGES_URL: https://agentcontrolstandard.org
+          GOOGLE_ANALYTICS_KEY: ""
+        run: |
+          mkdocs build --strict
