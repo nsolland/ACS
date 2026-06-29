@@ -1,6 +1,11 @@
 [project]
-name = "acs"
+name = "acs-docs"
 version = "0.1.0"
-description = "ACS Documentation"
-requires-python = ">=3.8"
-dependencies = [ "mike>=1.2.0", "mkdocs-material>=9.6.14", "pymdown-extensions>=10.0.0",]
+description = "Agent Control Standard documentation site"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "mike>=1.2.0",
+  "mkdocs-material>=9.6.14",
+  "pymdown-extensions>=10.0.0",
+]
